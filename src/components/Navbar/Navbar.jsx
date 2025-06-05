@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import './NavBar.css';
 import { AuthContext } from '../../contexts/AuthContext';
 // import { AuthContext } from '../../contexts/AuthContext';
@@ -7,8 +7,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const Navbar = () => { 
 
-    const userCreate = use(AuthContext)
-    console.log(userCreate);
+    const  {user} = use(AuthContext)
+    console.log(user);
     // const userInfo = use (AuthContext)
     // console.log('nav', userInfo);
      
@@ -39,7 +39,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+               { user? 
+               <a className="btn">Sign out</a> :
+                <Link to='/login'>Login</Link>
+                }
             </div>
         </div>
     );
