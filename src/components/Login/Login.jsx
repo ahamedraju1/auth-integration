@@ -1,10 +1,10 @@
-import React, { use, useContext } from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
 
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser } = use(AuthContext)
 
 
     const handleLogin = e => {
@@ -43,7 +43,8 @@ const Login = () => {
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn btn-neutral mt-4">Login</button>
                 </form>
-                <p>New to this site? Please <Link to='/register' className='text-blue-400 underline'>Register</Link></p>
+                <p>New to this site? Please 
+                    <Link to='/register' className='text-blue-400 underline'>Register</Link></p>
             </div>
         </div>
 

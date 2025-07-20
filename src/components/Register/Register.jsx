@@ -7,35 +7,34 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 
 const Register = () => {
+    const { userCreate } = use(AuthContext)
 
-        const {userCreate} = use(AuthContext)
-         
+    const handleRegister = e => {
+        e.preventDefault()
 
-        const handleRegister = e =>{
-            e.preventDefault()
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name, email, password);
 
-            const name = e.target.name.value;
-            const email = e.target.email.value;
-            const password = e.target.password.value;
-            console.log(name, email, password);
+        
+        // create user
+        // createUserWithEmailAndPassword(auth, email, password)
+        // .then((result)=>{
+        //     console.log(result.user)
+        // })
+        // .catch((error)=>{
+        //     console.log(error)
+        // })
 
-           // create user
-            // createUserWithEmailAndPassword(auth, email, password)
-            // .then((result)=>{
-            //     console.log(result.user)
-            // })
-            // .catch((error)=>{
-            //     console.log(error)
-            // })
-
-            userCreate(email, password)
-            .then(result=>{
+        userCreate(email, password)
+            .then(result => {
                 console.log(result)
             })
-            .catch(error=>{
+            .catch(error => {
                 console.log(error)
             })
-        }
+    }
 
     return (
 
@@ -49,13 +48,14 @@ const Register = () => {
                     <input type="email" name='email' className="input" placeholder="Email" />
                     <label className="label">Password</label>
                     <div className='relative'>
-                         <input type="password" name='password' className="input" placeholder="Password" />
-                         <button className='btn btn-xs absolute top-2 right-6'> <FaEye></FaEye> </button>
+                        <input type="password" name='password' className="input" placeholder="Password" />
+                        <button className='btn btn-xs absolute top-2 right-6'> <FaEye></FaEye> </button>
                     </div>
-                    
+
                     <button className="btn btn-neutral mt-4">Register</button>
                 </form>
-                 <p>Already have an account? Please <Link to='/login' className='text-blue-400 underline'>Login</Link></p>
+                <p>Already have an account? Please
+                    <Link to='/login' className='text-blue-400 underline'>Login</Link></p>
             </div>
         </div>
     );
